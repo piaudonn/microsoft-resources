@@ -24,14 +24,30 @@ Zscaler Internet Access (ZIA) firewall logs to **Azure Log Analytics** via a
 
 ## Quick Start
 
-```bash
-# 1. Patch the Bicep and generate the create-table helper. This example uses the ZIA FW log feed as an example and example resource group and log analytic workspace names. Modify the table name as needed although it must end with _CL
-i.e. python3 main.py cloud-nss-fw.bicep --table-name cloudnssfw_CL
+1. **Patch the Bicep and generate the create-table helper**
 
-# 2. Run the helper PowerShell script once to create the Aux table
-pwsh ./cloud-nss-fw_createAuxTable.ps1
+   ```bash
+   python3 main.py cloud-nss-fw.bicep --table-name cloudnssfw_CL
+   ```
 
-# 3. Deploy your (now patched) DCR as usual
-i.e. az stack group create --name cloud-nss-fw --resource-group rg-sentinel-cloud-fw --parameters cloud-nss-fw.bicepparam --deny-settings-mode 'none' --action-on-unmanage deleteResources
+   *Uses the ZIA firewall log feed and sample resource-group / workspace  
+   names. Adjust as needed; the table name **must** still end with `_CL`.*
+
+2. **Run the helper PowerShell script once to create the Aux table**
+
+   ```powershell
+   pwsh ./cloud-nss-fw_createAuxTable.ps1
+   ```
+
+3. **Deploy your (now patched) DCR as usual**
+
+   ```bash
+   az stack group create \
+     --name cloud-nss-fw \
+     --resource-group rg-sentinel-cloud-fw \
+     --parameters cloud-nss-fw.bicepparam \
+     --deny-settings-mode none \
+     --action-on-unmanage deleteResources
+   ```
 
 
