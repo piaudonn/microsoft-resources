@@ -17,8 +17,5 @@ param subscriptionId = 'your subscription id'
 // Found under Log Analytics workspace -> your workspace -> Overview -> Workspace ID
 param workspaceId = 'your workspace id'
 
-// The name you want to provide the Data Collection Endpoint that the template will create
-param dceName = 'dce-sentinel-cloud-web'
-
 // The name you want to provide the Data Collection Rule that the template will create
 param dcrName = 'dcr-sentinel-cloud-web'
