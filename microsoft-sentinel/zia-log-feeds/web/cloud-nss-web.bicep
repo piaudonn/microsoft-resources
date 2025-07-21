@@ -36,8 +36,6 @@ param subscriptionId string
 param workspaceId string
 
 // These resources are configured through bicep
-@description('Name of Data Collection Endpoint the template will create')
-param dceName string
 @description('Name of the Data Collection Rule the template will create')
 param dcrName string
 
